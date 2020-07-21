@@ -1,5 +1,5 @@
 import itertools
-from collections import Counter
+import collections
 import re
 import sympy
 import multiprocessing
@@ -190,6 +190,31 @@ import multiprocessing
 
 # print(camel_case("nameMax"))
 
+
+titles = titles = ['The Big Bang Theory', 'How I Met Your Mother', 'Dexter', 'Breaking Bad', 'Doctor Who', 'The Hobbit', 'Pacific Rim', 'Pulp Fiction', 'The Avengers', 'Shining']
+def return_match(titles,pattern):
+    l=[]
+
+    p=re.compile(r'(.+)('+pattern+'|'+pattern.lower()+')(.+)')
+    p1=re.compile(r'('+pattern+'|'+pattern.lower()+')(.+)')
+    p2=re.compile(r'(.+)('+pattern+'|'+pattern.lower()+')')
+    p3=re.compile(r'('+pattern+'|'+pattern.lower()+')')
+    for i in titles:
+        match=p.findall(i)
+        match1=p1.findall(i)
+        match2=p2.findall(i)
+        match3=p3.findall(i)
+        if match:
+            l.append(i)
+        elif match1:
+            l.append(i)
+        elif match2:
+            l.append(i)
+        elif match3:
+            l.append(i)
+
+    return l
+print(return_match(titles,"the"))
 
 
 
